@@ -9,6 +9,6 @@ namespace AdminGastos.Models
     {
         public string nombre { get; private set; }
         public double importe { get; private set; }
-        public ConceptoCompra concepto { get; private set; }
+        public ConceptoGasto concepto { get; private set; }
     }
 }

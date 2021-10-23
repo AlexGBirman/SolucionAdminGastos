@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace AdminGastos.Models
 {
-    public enum ConceptoPagoServicio
+    public enum ConceptoGasto
     {
+        COMIDA,
+        PERFUMERIA,
+        LIMPIEZA,
+        SALIDA,
         LUZ,
         GAS,
         AGUA,
@@ -14,6 +19,7 @@ namespace AdminGastos.Models
         CABLE,
         ABL,
         PATENTE,
-        SEGURO
+        SEGURO,
+        OTROS
     }
 }
