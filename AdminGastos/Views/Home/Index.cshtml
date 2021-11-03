@@ -2,7 +2,44 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <form asp-action="SetUsuario" asp-controller="Home" method="post">
+        <div class="form-group col-md-6">
+            <label>Nombre</label>
+            <input type="text" asp-for="Nombre" class="form-control" />
+            <label asp-validation-for="Nombre" class="label label-danger"></label>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Apellido</label>
+            <input type="text" asp-for="Apellido" class="form-control" />
+            <label asp-validation-for="Apellido" class="label label-danger"></label>
+        </div>
+        <div class="form-group col-md-6">
+            <label>DNI</label>
+            <input type="text" asp-for="DNI" class="form-control" />
+            <label asp-validation-for="DNI" class="label label-danger"></label>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Correo</label>
+            <input type="text" asp-for="Correo" class="form-control" />
+            <label asp-validation-for="Correo" class="label label-danger"></label>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Estado</label>
+            <input type="checkbox" asp-for="EstaActivo" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label>Fecha de Nacimiento</label>
+            <input type="date" asp-for="FechaNacimiento" class="form-control" />
+            <label asp-validation-for="FechaNacimiento" class="label label-danger"></label>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Edad</label>
+            <input type="number" asp-for="Edad" class="form-control" />
+            <label asp-validation-for="Edad" class="label label-danger"></label>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
 </div>
