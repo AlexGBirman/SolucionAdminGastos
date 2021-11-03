@@ -11,9 +11,18 @@ namespace AdminGastos.Models
     {
         public DbSet<Operacion> Gastos { get; set; }
 
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Operacion>().ToTable("Operacion");
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder OB)
         {
             OB.UseSqlServer("Data Source = DESKTOP-S9UR8V3\\SQLEXPRESS; Initial Catalog = Gastos; Integrated Security = true;");
+        }
+
+        public GastosContext(DbContextOptions<GastosContext> options) : base(options)
+        {
         }
     }
 }
