@@ -10,6 +10,7 @@ namespace AdminGastos.Models
     public class GastosContext:DbContext
     {
         public DbSet<Operacion> Gastos { get; set; }
+        public DbSet<Producto> Productos { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

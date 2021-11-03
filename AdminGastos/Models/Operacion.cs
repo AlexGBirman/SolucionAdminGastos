@@ -11,8 +11,13 @@ namespace AdminGastos.Models
     {
         [Key]
         public int IdOperacion { get; set; }
-        public double importe { get; set; }
-        public List<Producto> productos { get; set; }
+       
+        [Required(ErrorMessage = "Ingrese el importe")]
+        public double Importe { get; set; }
+        public virtual List<Producto> Productos { get; set; } //establece la relación de 1 a n
+        
+        [Required(ErrorMessage = "Ingrese la fecha")]
+        [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }
 
     }
