@@ -15,7 +15,7 @@ namespace AdminGastos.Models
         [Required(ErrorMessage = "Ingrese el importe")]
         public double importe { get; set; }
 
-        public virtual Producto Producto { get; set; } //establece la relación de 1 a n
+        public virtual String Producto { get; set; } //establece la relación de 1 a 1
         
         [Required(ErrorMessage = "Ingrese la fecha")]
         [DataType(DataType.Date)]

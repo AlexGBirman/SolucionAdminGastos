@@ -4,14 +4,16 @@ using AdminGastos.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdminGastos.Migrations
 {
     [DbContext(typeof(GastosContext))]
-    partial class GastosContextModelSnapshot : ModelSnapshot
+    [Migration("20211104002259_PORFIS")]
+    partial class PORFIS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
