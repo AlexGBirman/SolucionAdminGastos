@@ -19,7 +19,7 @@ namespace AdminGastos.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder OB)
         {
-            OB.UseSqlServer("Data Source = DESKTOP-S9UR8V3\\SQLEXPRESS; Initial Catalog = Gastos; Integrated Security = true;");
+            OB.UseSqlServer("Data Source = localhost; Initial Catalog = Gastos; Integrated Security = true;");
         }
 
         public GastosContext(DbContextOptions<GastosContext> options) : base(options)
