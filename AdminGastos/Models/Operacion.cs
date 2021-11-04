@@ -21,5 +21,7 @@ namespace AdminGastos.Models
         [DataType(DataType.Date)]
         public DateTime Fecha { get; set; }
 
+        public ConceptoGasto concepto { get; set; }
+
     }
 }
