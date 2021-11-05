@@ -15,6 +15,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.importe)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Concepto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -23,6 +32,15 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.importe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Concepto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdOperacion">Edit</a> |

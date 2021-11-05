@@ -18,14 +18,34 @@
                 <span asp-validation-for="importe" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Producto" class="control-label"></label>
                 <input asp-for="Producto" class="form-control" />
                 <span asp-validation-for="Producto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Concepto" class="control-label"></label>
+                <select asp-for="Concepto" class="form-control">
+                    <option value="@null"> </option>
+                    <option value="@ConceptoGasto.COMIDA.ToString()"> Comida </option>
+                    <option value="@ConceptoGasto.PERFUMERIA.ToString()"> Perfumeria </option>
+                    <option value="@ConceptoGasto.LIMPIEZA.ToString()">Limpieza </option>
+                    <option value="@ConceptoGasto.SALIDA.ToString()"> Salida </option>
+                    <option value="@ConceptoGasto.LUZ.ToString()"> Luz </option>
+                    <option value="@ConceptoGasto.GAS.ToString()"> Gas </option>
+                    <option value="@ConceptoGasto.AGUA.ToString()"> Agua </option>
+                    <option value="@ConceptoGasto.INTERNET.ToString()"> Internet </option>
+                    <option value="@ConceptoGasto.CABLE.ToString()"> Cable </option>
+                    <option value="@ConceptoGasto.ABL.ToString()"> ABL </option>
+                    <option value="@ConceptoGasto.PATENTE.ToString()"> Patente </option>
+                    <option value="@ConceptoGasto.SEGURO.ToString()"> Seguro </option>
+                    <option value="@ConceptoGasto.OTROS.ToString()"> Otros </option>
+                </select>
+                <span asp-validation-for="Concepto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

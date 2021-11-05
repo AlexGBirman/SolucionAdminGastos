@@ -1,4 +1,4 @@
-﻿@model Operacion
+﻿@model AdminGastos.Models.Operacion
 
 @{
     ViewData["Title"] = "Details";
@@ -15,6 +15,24 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.importe)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Producto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Producto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Concepto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Concepto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
         </dd>
     </dl>
 </div>
