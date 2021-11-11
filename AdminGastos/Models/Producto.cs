@@ -8,7 +8,6 @@ namespace AdminGastos.Models
 {
     public class Producto
     {
-        [Key]
         public int id { get;  set; }
         public string nombre { get;  set; }
         public double importe { get;  set; }

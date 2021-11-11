@@ -9,6 +9,19 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div>
+    <input type="hidden" name="slide" id="slide-hidden"/>
+    <select id="slide" name="slide">
+        <option value="10000"> 10.000</option>
+        <option value="150000"> 150.000</option>
+    </select>
+</div>
+<script>
+    var hidden = document.getElementById("slide");
+    var escon = document.getElementById("slide-hidden");
+
+    escon.value = hidden.value;
+</script>
 <table class="table">
     <thead>
         <tr>
@@ -49,5 +62,6 @@
             </td>
         </tr>
 }
+
     </tbody>
 </table>

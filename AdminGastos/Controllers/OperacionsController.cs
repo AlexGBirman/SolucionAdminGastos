@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdminGastos.Models;
+using System.Data;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace AdminGastos.Controllers
 {
@@ -21,10 +23,17 @@ namespace AdminGastos.Controllers
         // GET: Operacions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Gastos.ToListAsync());
+
+            string query = "SELECT * FROM Operacion where importe < " + Document.getElementById("slide");
+            _ = await _context.Gastos.FromSqlRaw(query).FirstOrDefaultAsync();
+
+
+            return View(await _context.Gastos.FromSqlRaw(query).ToListAsync());
         }
 
         // GET: Operacions/Details/5
+
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -38,6 +47,7 @@ namespace AdminGastos.Controllers
             {
                 return NotFound();
             }
+            ViewBag.OpePiola = operacion;
 
             return View(operacion);
         }
