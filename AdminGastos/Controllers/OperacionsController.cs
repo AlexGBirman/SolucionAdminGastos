@@ -21,10 +21,25 @@ namespace AdminGastos.Controllers
         }
 
         // GET: Operacions
+
+
+        [HttpPost]
+        public async Task<IActionResult> Index(double filtro)
+        {
+
+            ViewBag.filtro = filtro;
+
+            string query = "SELECT * FROM Operacion where importe < " + filtro;
+            _ = await _context.Gastos.FromSqlRaw(query).FirstOrDefaultAsync();
+
+
+            return View(await _context.Gastos.FromSqlRaw(query).ToListAsync());
+        }
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
 
-            string query = "SELECT * FROM Operacion where importe < " + Document.getElementById("slide");
+            string query = "SELECT * FROM Operacion";
             _ = await _context.Gastos.FromSqlRaw(query).FirstOrDefaultAsync();
 
 

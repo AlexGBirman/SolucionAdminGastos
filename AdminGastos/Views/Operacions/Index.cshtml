@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<AdminGastos.Models.Operacion>
 
+
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,19 +11,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<div>
-    <input type="hidden" name="slide" id="slide-hidden"/>
-    <select id="slide" name="slide">
-        <option value="10000"> 10.000</option>
-        <option value="150000"> 150.000</option>
-    </select>
-</div>
-<script>
-    var hidden = document.getElementById("slide");
-    var escon = document.getElementById("slide-hidden");
+<form asp-action="Index" method="post" >
+    <input type="number" id="filtro" name="filtro" />
+    <input type="submit" value="Index">
+    
+    @*<div>
+        <label > Operacion </label>
+        <input id="filtro" />
+        <input type="submit" value="buscar" onclick="location.href = '@Url.Action("Index", "Operacions")/'"/>
+    </div>*@
+</form>
 
-    escon.value = hidden.value;
-</script>
 <table class="table">
     <thead>
         <tr>
@@ -41,27 +41,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.importe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Concepto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdOperacion">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdOperacion">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdOperacion">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.importe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Concepto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdOperacion">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdOperacion">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdOperacion">Delete</a>
+                </td>
+            </tr>
+        }
 
     </tbody>
 </table>
