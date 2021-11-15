@@ -24,23 +24,50 @@ namespace AdminGastos.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Index(double filtro)
+        public async Task<IActionResult> IndexFiltro(double filtro)
         {
-
-            ViewBag.filtro = filtro;
-
             string query = "SELECT * FROM Operacion where importe < " + filtro;
-            _ = await _context.Gastos.FromSqlRaw(query).FirstOrDefaultAsync();
-
-
-            return View(await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync());
+            var algo = await _context.Gastos.FromSqlRaw(query).ToListAsync();
+            return View("Index",algo);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> IndexOrden(string orden)
+        {
+            string query = "SELECT * FROM Operacion";
+            var algo = await _context.Gastos.FromSqlRaw(query).ToListAsync();
+
+            if (orden.Equals("importe"))
+            {
+                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.importe).ToListAsync();
+            }
+            else if (orden.Equals("producto"))
+            {
+                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Producto).ToListAsync();
+            }
+            else if (orden.Equals("fecha"))
+            {
+                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync();
+            }
+            else if (orden.Equals("concepto"))
+            {
+                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Concepto).ToListAsync();
+            }
+            else
+            {
+                //do nothing
+            }
+
+
+            return View("Index",algo);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
 
             string query = "SELECT * FROM Operacion";
-            _ = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.importe).FirstOrDefaultAsync();
 
 
             return View(await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync());

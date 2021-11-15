@@ -11,15 +11,19 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-action="Index" method="post" >
+<form asp-action="IndexFiltro" method="post">
     <input type="number" id="filtro" name="filtro" />
-    <input type="submit" value="Index">
-    
-    @*<div>
-        <label > Operacion </label>
-        <input id="filtro" />
-        <input type="submit" value="buscar" onclick="location.href = '@Url.Action("Index", "Operacions")/'"/>
-    </div>*@
+    <input type="submit" value="Buscar">
+</form>
+
+<form asp-action="IndexOrden" method="post">
+    <select id="orden" name="orden">
+        <option value="importe"> Importe </option>
+        <option value="concepto"> Concepto </option>
+        <option value="fecha"> Fecha </option>
+        <option value="producto"> Producto </option>
+    </select>
+    <input type="submit" value="Ordenar" />
 </form>
 
 <table class="table">
