@@ -33,17 +33,17 @@ namespace AdminGastos.Controllers
             _ = await _context.Gastos.FromSqlRaw(query).FirstOrDefaultAsync();
 
 
-            return View(await _context.Gastos.FromSqlRaw(query).ToListAsync());
+            return View(await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync());
         }
         [HttpGet]
         public async Task<IActionResult> Index()
         {
 
             string query = "SELECT * FROM Operacion";
-            _ = await _context.Gastos.FromSqlRaw(query).FirstOrDefaultAsync();
+            _ = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.importe).FirstOrDefaultAsync();
 
 
-            return View(await _context.Gastos.FromSqlRaw(query).ToListAsync());
+            return View(await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync());
         }
 
         // GET: Operacions/Details/5
