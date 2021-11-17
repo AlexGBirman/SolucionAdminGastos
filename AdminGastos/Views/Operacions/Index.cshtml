@@ -4,8 +4,10 @@
 
 @{
     ViewData["Title"] = "Index";
+    double balance = 0;
+    var estilo = "color: red font-size:20px";
 }
-
+<link href="C:\Users\chewy\Desktop\ORT\2do Cuatrimestre\Nuevas Tecnologias\Proyecto Final\AdminGastos\Estilos\StyleSheet.css" rel="stylesheet" />
 <h1>Index</h1>
 
 <p>
@@ -24,6 +26,29 @@
         <option value="producto"> Producto </option>
     </select>
     <input type="submit" value="Ordenar" />
+</form>
+
+<form asp-action="Index" method="get">
+    <input type="submit" value="Mostrar todos de nuevo"/> 
+</form>
+
+<form asp-action="query" method="post">
+    <h2> Balances </h2>
+
+    @foreach (var item in Model)
+    {
+        balance += item.importe;
+    }
+
+    @if(balance > 0) {
+        estilo = "color:green";
+    }
+    else
+    {
+        estilo = "color:red";
+    } 
+    <h3 style="@(estilo)" class="link"> @balance </h3>
+
 </form>
 
 <table class="table">
