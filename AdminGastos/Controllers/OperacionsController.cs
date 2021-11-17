@@ -66,6 +66,23 @@ namespace AdminGastos.Controllers
             return View("Index",algo);
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> IndexPorMes(int mes)
+        {
+
+            string query = "Select * from Operacion";
+            
+            if ((mes) >= 1 && (mes)<= 12)
+            {
+                query = "Select * from Operacion where MONTH(Fecha) = " + mes;
+            }
+
+            var algo = await _context.Gastos.FromSqlRaw(query).ToListAsync();
+
+            return View("Index", algo);
+        }
+
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -77,17 +94,6 @@ namespace AdminGastos.Controllers
 
         // GET: Operacions/Details/5
 
-        [HttpPost]
-        public async Task<IActionResult> query()
-        {
-
-            string query = "SELECT SUM(Importe) FROM Operacion";
-            var algo = await _context.Gastos.FromSqlRaw(query).ToListAsync();
-
-            ViewBag.Balance = algo;
-
-            return View("Index", algo);
-        }
 
         public async Task<IActionResult> Details(int? id)
         {
