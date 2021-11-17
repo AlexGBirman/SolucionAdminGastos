@@ -38,25 +38,28 @@ namespace AdminGastos.Controllers
             string query = "SELECT * FROM Operacion";
             var algo = await _context.Gastos.FromSqlRaw(query).ToListAsync();
 
-            if (orden.Equals("importe"))
+
+            switch (orden)
             {
-                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.importe).ToListAsync();
-            }
-            else if (orden.Equals("producto"))
-            {
-                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Producto).ToListAsync();
-            }
-            else if (orden.Equals("fecha"))
-            {
-                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync();
-            }
-            else if (orden.Equals("concepto"))
-            {
-                algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Concepto).ToListAsync();
-            }
-            else
-            {
-                //do nothing
+                case "producto":
+                    algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Producto).ToListAsync();
+                    break;
+
+                case "importe":
+                    algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.importe).ToListAsync();
+                    break;
+
+                case "fecha":
+                    algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync();
+                    break;
+
+                case "concepto":
+                    algo = await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Concepto).ToListAsync();
+                    break;
+
+                case "":
+                    //do nothing
+                    break;
             }
 
 
@@ -69,12 +72,22 @@ namespace AdminGastos.Controllers
 
             string query = "SELECT * FROM Operacion";
 
-
             return View(await _context.Gastos.FromSqlRaw(query).OrderBy(a => a.Fecha).ToListAsync());
         }
 
         // GET: Operacions/Details/5
 
+        [HttpPost]
+        public async Task<IActionResult> query()
+        {
+
+            string query = "SELECT SUM(Importe) FROM Operacion";
+            var algo = await _context.Gastos.FromSqlRaw(query).ToListAsync();
+
+            ViewBag.Balance = algo;
+
+            return View("Index", algo);
+        }
 
         public async Task<IActionResult> Details(int? id)
         {
